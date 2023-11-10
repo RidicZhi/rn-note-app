@@ -1,0 +1,4 @@
+{
+    "clients": ["VIC","QLD", "NSW", "NT", "TAS", "ACT", "WA", "SA"],
+    "categories": [ "Goal Evidence", "Support Coordination", "Active Duty"]
+}
