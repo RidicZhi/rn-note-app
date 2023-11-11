@@ -5,10 +5,13 @@ import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native'
-import { LAYOUT } from '../theme'
+import { COLORS, LAYOUT } from '../theme'
+import { formatDate } from '../utils'
 
 const NoteListGrid = ({ notes, navigation }) => {
   const renderItem = ({ item }) => {
+    const createdTime = formatDate(item.id)
+    console.log(createdTime)
     const onSelectNote = () => {
       navigation.navigate('editNote', item)
     }
@@ -24,6 +27,7 @@ const NoteListGrid = ({ notes, navigation }) => {
           <Text style={styles.titleTxt}>{item.client}</Text>
         </View>
         <Text style={styles.descTxt}>{item.desc}</Text>
+        <Text style={styles.timeTxt}>{createdTime} created</Text>
       </TouchableOpacity>
     )
   }
@@ -72,7 +76,15 @@ const styles = StyleSheet.create({
   descTxt: {
     fontFamily: 'ProductSans',
     letterSpacing: 0.5,
-    fontSize: 14
+    fontSize: 14,
+    marginBottom: LAYOUT['spacing-05']
+  },
+  timeTxt: {
+    fontFamily: 'ProductSansItalic',
+    letterSpacing: 0.5,
+    fontSize: 14,
+    color: COLORS.TEXTGREY,
+    textAlign: 'right'
   },
   hintContainer: {
     marginTop: LAYOUT['spacing-06'],
