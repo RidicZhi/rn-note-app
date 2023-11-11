@@ -1,32 +1,34 @@
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, SafeAreaView, View } from 'react-native'
 import { useSelector } from 'react-redux'
+import { LAYOUT, COLORS } from '../theme'
+import NoteListGrid from '../components/NoteListGrid'
+import { ButtonContainer, AddButton } from '../components/Buttons'
 
 const NotesHome = ({ navigation }) => {
   const noteList = useSelector((state) => state.noteList)
-  console.log(noteList)
-  
+
   const onAdd = () => {
     navigation.navigate('addNote')
   }
-  return (
-    <View style={styles.container}>
-      <Text style={{fontFamily:'ProductSansItalic'}}>NoteList</Text>
-      <StatusBar style='auto' />
 
-      <TouchableOpacity onPress={onAdd}>
-        <Text>add</Text>
-      </TouchableOpacity>
-    </View>
+  return (
+    <SafeAreaView>
+      <View style={styles.container}>
+        <NoteListGrid notes={noteList} onSelectNote={onAdd} />
+        <ButtonContainer>
+          <AddButton onAdd={onAdd} />
+        </ButtonContainer>
+      </View>
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    padding: LAYOUT['spacing-06'],
+    backgroundColor: COLORS.WHITE,
+    height: '100%',
+    width: '100%'
   }
 })
 
