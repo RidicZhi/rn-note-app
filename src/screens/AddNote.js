@@ -1,5 +1,11 @@
 import { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableWithoutFeedback,
+  Keyboard
+} from 'react-native'
 import { useDispatch } from 'react-redux'
 import { saveNewNote } from '../store/notesReducer'
 import { COLORS, LAYOUT } from '../theme'
@@ -16,7 +22,7 @@ const AddNote = ({ navigation, route }) => {
   const dispatch = useDispatch()
 
   const onSave = () => {
-    if (!client || !category ||!note) {
+    if (!client || !category || !note) {
       setError(true)
       return
     }
@@ -33,21 +39,23 @@ const AddNote = ({ navigation, route }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <PopoverSelector
-        client={client}
-        setClient={setClient}
-        category={category}
-        setCategory={setCategory}
-        note={note}
-        setNote={setNote}
-      />
-      <NoteInput note={note} setNote={setNote} />
-      <ButtonContainer>
-        <SaveButton onSave={onSave} />
-      </ButtonContainer>
-      {error && <Text style={styles.errTxt}>Tell me more~🤨</Text>}
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <PopoverSelector
+          client={client}
+          setClient={setClient}
+          category={category}
+          setCategory={setCategory}
+          note={note}
+          setNote={setNote}
+        />
+        <NoteInput note={note} setNote={setNote} />
+        <ButtonContainer keyboardVerticalOffset={120}>
+          <SaveButton onSave={onSave} />
+        </ButtonContainer>
+        {error && <Text style={styles.errTxt}>Tell me more~🤨</Text>}
+      </View>
+    </TouchableWithoutFeedback>
   )
 }
 

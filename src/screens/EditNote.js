@@ -1,11 +1,21 @@
 import { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableWithoutFeedback,
+  Keyboard
+} from 'react-native'
 import { useDispatch } from 'react-redux'
 import { updateNote, deleteNote } from '../store/notesReducer'
 import { COLORS, LAYOUT } from '../theme'
 import PopoverSelector from '../components/PopoverSelector'
 import NoteInput from '../components/NoteInput'
-import { ButtonContainer, SaveButton, DeleteButton } from '../components/Buttons'
+import {
+  ButtonContainer,
+  SaveButton,
+  DeleteButton
+} from '../components/Buttons'
 
 const AddNote = ({ navigation, route }) => {
   const item = route.params
@@ -18,13 +28,13 @@ const AddNote = ({ navigation, route }) => {
   const dispatch = useDispatch()
 
   const onUpdateNote = () => {
-    if (!client || !category ||!note) {
+    if (!client || !category || !note) {
       setError(true)
       return
     }
     setError(false)
     dispatch(
-        updateNote({
+      updateNote({
         id: item.id,
         category,
         client,
@@ -35,29 +45,29 @@ const AddNote = ({ navigation, route }) => {
   }
 
   const onDeleteNote = () => {
-    dispatch(
-        deleteNote(item.id)
-    )
+    dispatch(deleteNote(item.id))
     navigation.goBack()
   }
 
   return (
-    <View style={styles.container}>
-      <PopoverSelector
-        client={client}
-        setClient={setClient}
-        category={category}
-        setCategory={setCategory}
-        note={note}
-        setNote={setNote}
-      />
-      <NoteInput note={note} setNote={setNote} />
-      <ButtonContainer>
-        <SaveButton onSave={onUpdateNote} />
-        <DeleteButton onDelete={onDeleteNote} />
-      </ButtonContainer>
-      {error && <Text style={styles.errTxt}>Tell me more~🤨</Text>}
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <PopoverSelector
+          client={client}
+          setClient={setClient}
+          category={category}
+          setCategory={setCategory}
+          note={note}
+          setNote={setNote}
+        />
+        <NoteInput note={note} setNote={setNote} />
+        <ButtonContainer keyboardVerticalOffset={50}>
+          <SaveButton onSave={onUpdateNote} />
+          <DeleteButton onDelete={onDeleteNote} />
+        </ButtonContainer>
+        {error && <Text style={styles.errTxt}>Tell me more~🤨</Text>}
+      </View>
+    </TouchableWithoutFeedback>
   )
 }
 

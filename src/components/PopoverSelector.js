@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import Popover from '@ant-design/react-native/lib/popover'
 import data from '../constants/constants.json'
 import { COLORS, LAYOUT, deviceWidth } from '../theme'
