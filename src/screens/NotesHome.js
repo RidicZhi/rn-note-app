@@ -12,7 +12,7 @@ const NotesHome = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.safeAreaBg}>
       <View style={styles.container}>
         <NoteListGrid notes={noteList} navigation={navigation} />
         <ButtonContainer>
@@ -24,6 +24,9 @@ const NotesHome = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
+  safeAreaBg: {
+    backgroundColor: COLORS.WHITE,
+  },
   container: {
     padding: LAYOUT['spacing-06'],
     backgroundColor: COLORS.WHITE,

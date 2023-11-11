@@ -4,7 +4,9 @@ const COLORS = {
   BRAND: '#F6AC19',
   WHITE: '#ffffff',
   BLACK: '#000000',
-  GRAY: '#E6E6E6'
+  GRAY: '#E6E6E6',
+  WARNING: '#ff0f0f',
+  TEXTGREY: 'rgba(0,0,0,0.6)'
 }
 
 const LAYOUT = {
@@ -38,5 +40,6 @@ const customScreenOptions = {
 }
 
 const deviceWidth = Dimensions.get('window').width
+const deviceHeight = Dimensions.get('window').height
 
-export { COLORS, LAYOUT, customScreenOptions, deviceWidth }
+export { COLORS, LAYOUT, customScreenOptions, deviceWidth, deviceHeight }

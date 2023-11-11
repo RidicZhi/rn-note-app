@@ -1,5 +1,5 @@
 import Button from '@ant-design/react-native/lib/button'
-import { Entypo } from '@expo/vector-icons'
+import { Entypo,AntDesign } from '@expo/vector-icons'
 import { StyleSheet, View } from 'react-native'
 import { COLORS, LAYOUT, deviceWidth,  } from '../theme'
 
@@ -19,6 +19,12 @@ const SaveButton = ({ onSave }) => (
   </Button>
 )
 
+const DeleteButton = ({ onDelete }) => (
+  <Button type='warning' style={styles.deleteButton} onPress={onDelete}>
+    <AntDesign name='delete' size={24} color={COLORS.WHITE}/>
+  </Button>
+)
+
 const styles = StyleSheet.create({
   buttonContainer: {
     position: 'absolute',
@@ -32,7 +38,16 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: COLORS.BLACK,
     backgroundColor:COLORS.GRAY
+  },
+  deleteButton: {
+    width: deviceWidth * 0.15,
+    height: deviceWidth * 0.15,
+    borderRadius: '50%',
+    borderWidth: 1.5,
+    borderColor: COLORS.GRAY,
+    backgroundColor: COLORS.WARNING,
+    marginTop:  LAYOUT['spacing-05']
   }
 })
 
-export { AddButton, SaveButton, ButtonContainer }
+export { AddButton, SaveButton, DeleteButton, ButtonContainer }
