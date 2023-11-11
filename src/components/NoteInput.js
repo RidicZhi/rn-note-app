@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 
-import { COLORS, LAYOUT, deviceHeight, deviceWidth } from '../theme'
+import { COLORS, LAYOUT, deviceHeight } from '../theme'
 
 const NoteInput = ({ note, setNote }) => {
   return (

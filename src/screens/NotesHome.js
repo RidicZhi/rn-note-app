@@ -14,7 +14,7 @@ const NotesHome = ({ navigation }) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <NoteListGrid notes={noteList} onSelectNote={onAdd} />
+        <NoteListGrid notes={noteList} navigation={navigation} />
         <ButtonContainer>
           <AddButton onAdd={onAdd} />
         </ButtonContainer>

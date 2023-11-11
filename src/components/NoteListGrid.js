@@ -2,18 +2,20 @@ import {
   FlatList,
   Text,
   View,
-  Image,
   StyleSheet,
   TouchableOpacity
 } from 'react-native'
-import { LAYOUT, COLORS, deviceWidth } from '../theme'
+import { LAYOUT } from '../theme'
 
-const NoteListGrid = ({ notes, onSelectNote }) => {
+const NoteListGrid = ({ notes, navigation }) => {
   const renderItem = ({ item }) => {
-    console.log()
+    const onSelectNote = () => {
+      navigation.navigate('editNote', item)
+    }
+
     return (
       <TouchableOpacity
-        onPress={() => onSelectNote(item)}
+        onPress={onSelectNote}
         key={item.id}
         style={styles.gridContainer}
       >
@@ -74,7 +76,7 @@ const styles = StyleSheet.create({
   },
   hintContainer: {
     marginTop: LAYOUT['spacing-06'],
-    alignItems:'center'
+    alignItems: 'center'
   },
   hintTxt: {
     fontFamily: 'ProductSansItalic',
