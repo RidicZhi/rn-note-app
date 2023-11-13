@@ -46,8 +46,6 @@ const AddNote = ({ navigation, route }) => {
           setClient={setClient}
           category={category}
           setCategory={setCategory}
-          note={note}
-          setNote={setNote}
         />
         <NoteInput note={note} setNote={setNote} />
         <ButtonContainer keyboardVerticalOffset={120}>

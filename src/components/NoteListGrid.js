@@ -11,7 +11,7 @@ import { formatDate } from '../utils'
 const NoteListGrid = ({ notes, navigation }) => {
   const renderItem = ({ item }) => {
     const createdTime = formatDate(item.id)
-    console.log(createdTime)
+
     const onSelectNote = () => {
       navigation.navigate('editNote', item)
     }
